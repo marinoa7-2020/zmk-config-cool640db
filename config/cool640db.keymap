@@ -45,13 +45,13 @@
 
         MB1_ {
             bindings = <&mkp MB1>;
-            key-positions = <4 3>;
+            key-positions = <16 17>;
             layers = <0>;
         };
 
         MB2_ {
             bindings = <&mkp MB2>;
-            key-positions = <3 2>;
+            key-positions = <18 17>;
             layers = <0>;
         };
 
