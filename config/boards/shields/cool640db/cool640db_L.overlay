@@ -55,9 +55,11 @@
         force-awake;
     };
 };
-/* rgbled_adapter用にオンボードLEDを赤色LEDとして割り当て */
+/* rgbled_adapter用にオンボードLEDを赤・緑・青すべてのエイリアスに割り当て */
 / {
     aliases {
         led-red = &led0;
+        led-green = &led0;
+        led-blue = &led0;
     };
 };
