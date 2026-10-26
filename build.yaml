@@ -1,8 +1,8 @@
 include:
   - board: seeeduino_xiao_ble
-        snippet: studio-rpc-usb-uart
+    shield: cool640db_R
+    snippet: studio-rpc-usb-uart
   - board: seeeduino_xiao_ble
-      - board: seeeduino_xiao_ble
+    shield: cool640db_L
+  - board: seeeduino_xiao_ble
     shield: settings_reset
- 
- 
