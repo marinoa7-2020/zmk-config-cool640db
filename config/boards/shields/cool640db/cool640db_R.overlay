@@ -62,3 +62,9 @@
         force-awake;
     };
 };
+/* rgbled_adapter用にオンボードLEDを赤色LEDとして割り当て */
+/ {
+    aliases {
+        led-red = &led0;
+    };
+};
