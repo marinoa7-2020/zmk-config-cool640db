@@ -1,4 +1,3 @@
-#include <seeeduino_xiao_ble.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include "cool640db.dtsi"
 
