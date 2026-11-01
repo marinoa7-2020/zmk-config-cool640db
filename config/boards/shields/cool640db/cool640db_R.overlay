@@ -1,3 +1,4 @@
+#include <seeeduino_xiao_ble.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include "cool640db.dtsi"
 
@@ -33,12 +34,18 @@
 };
 
 &trackball_listener_L {
-    status = "okay";
+    status = "disabled";
 };
 
-&trackball_listener_R {
-    status = "okay";
-    device = <&trackball_R>;
+// 右側用リスナーをここで定義・有効化
+/ {
+    trackball_listener_R: trackball_listener_R {
+        compatible = "zmk,input-listener";
+        status = "okay";
+        device = <&trackball_R>;
+
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>;
+    };
 };
 
 &spi0 {
@@ -55,7 +62,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        cpi = <400>;
+        cpi = <1600>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
