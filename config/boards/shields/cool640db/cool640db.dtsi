@@ -21,10 +21,10 @@
         };
     };
 
-    // 左側用（スクロール設定）
+    // 左側用（スクロール設定：有効化に修整）
     trackball_listener_L: trackball_listener_L {
         compatible = "zmk,input-listener";
-        status = "disabled";
+        status = "okay";
         device = <&trackball_split_L>;
 
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
