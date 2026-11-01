@@ -33,18 +33,17 @@
 };
 
 &trackball_listener_L {
-    status = "disabled";
+    status = "okay";
 };
 
-// 右側用リスナーをルートブロック内に正しく定義
 / {
     trackball_listener_R: trackball_listener_R {
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&trackball_R>;
 
-        // Y反転（Y_INVERT）を削除して上下の向きを修整
-        input-processors = <&zip_xy_scaler 1 1>;
+        // 感度プロセッサの調整
+        input-processors = <&zip_xy_scaler 1 4>;
     };
 };
 
@@ -62,7 +61,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        cpi = <1600>;
+        cpi = <400>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
