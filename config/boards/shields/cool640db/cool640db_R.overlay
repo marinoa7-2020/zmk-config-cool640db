@@ -42,9 +42,8 @@
         status = "okay";
         device = <&trackball_R>;
 
-        // X軸とY軸を入れ替えて左右の反応を直す ＋ 速度を少し調整
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
-                           <&zip_xy_scaler 1 2>;
+        // スケーラーを外し、純粋に軸の入れ替えのみにする
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>;
     };
 };
 
