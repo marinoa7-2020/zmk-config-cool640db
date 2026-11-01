@@ -43,6 +43,9 @@
         status = "okay";
         device = <&trackball_R>;
 
+// 反転記述（Y_INVERT）を削除する
+        input-processors = <&zip_xy_scaler 1 1>; 
+    };
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>;
     };
 };
