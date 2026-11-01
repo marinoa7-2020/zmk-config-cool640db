@@ -42,9 +42,8 @@
         status = "okay";
         device = <&trackball_R>;
 
-        // 軸の入れ替え ＋ Y軸の反転を追加
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
-                           <&zip_xy_scaler 1 2>;
+        // 一旦変数を外して標準のリスナー動作に戻します
+        input-processors = <&zip_xy_scaler 1 2>;
     };
 };
 
@@ -68,4 +67,4 @@
         y-input-code = <INPUT_REL_Y>;
         force-awake;
     };
-};
+};q
