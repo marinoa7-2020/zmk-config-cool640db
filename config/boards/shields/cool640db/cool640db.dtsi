@@ -33,15 +33,6 @@
                            <&zip_xy_to_scroll_mapper>;
     };
 
-    // 右側用（マウスカーソル移動設定）
-    trackball_listener_R: trackball_listener_R {
-        compatible = "zmk,input-listener";
-        status = "okay";
-        device = <&trackball_R>;
-
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>;
-    };
-
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
