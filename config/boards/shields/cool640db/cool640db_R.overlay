@@ -42,8 +42,9 @@
         status = "okay";
         device = <&trackball_R>;
 
-        // 感度プロセッサの調整
-        input-processors = <&zip_xy_scaler 1 4>;
+        // X軸とY軸を入れ替えて左右の反応を直す ＋ 速度を少し調整
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
+                           <&zip_xy_scaler 1 2>;
     };
 };
 
@@ -61,7 +62,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        cpi = <400>;
+        cpi = <600>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
