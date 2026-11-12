@@ -50,7 +50,7 @@
     };
 };
 
-// 左側のトラックボールの入力をスプリット経由で送信するための正しい定義
+// 左側トラックボールの入力をアダプター経由でスプリット出力へ渡す正しい定義
 / {
     zip_adapter_L {
         compatible = "zmk,input-processor-adapter";
@@ -60,10 +60,4 @@
         input = <&trackball_L>;
         output = <&trackball_split_L>;
     };
-};
-
-&trackball_split_L {
-    status = "okay";
-    device = <&trackball_L>;
-    input = <&trackball_L>;
 };
