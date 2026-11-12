@@ -42,7 +42,7 @@
         status = "okay";
         device = <&trackball_R>;
 
-        // 軸の入れ替え ＋ Y軸の反転を適用
+        // 軸の入れ替え ＋ Y軸の反転 ＋ 速度スケーラー
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
                            <&zip_xy_scaler 1 2>;
     };
