@@ -50,14 +50,8 @@
     };
 };
 
-// 左側トラックボールの入力をアダプター経由でスプリット出力へ渡す正しい定義
-/ {
-    zip_adapter_L {
-        compatible = "zmk,input-processor-adapter";
-        #input-processor-cells = <0>;
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>;
-        type = <INPUT_EV_REL>;
-        input = <&trackball_L>;
-        output = <&trackball_split_L>;
-    };
+// 正しいプロパティ名 `device` を使ってスプリット入力と結びつける
+&trackball_split_L {
+    status = "okay";
+    device = <&trackball_L>;
 };
