@@ -64,8 +64,9 @@
         status = "okay";
         device = <&trackball_R>;
 
-        // X軸とY軸を入れ替える
+        // 軸を入れ替えた後、左右方向（X軸）だけ2倍にする
         input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>;
+            <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP)>,
+            <&zip_x_scaler 2 1>;
     };
 };
