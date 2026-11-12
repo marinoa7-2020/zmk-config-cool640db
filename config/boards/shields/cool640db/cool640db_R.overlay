@@ -42,8 +42,10 @@
         status = "okay";
         device = <&trackball_R>;
 
-        // 軸の入れ替え ＋ X軸の反転を適用（スケーラーは一旦外して感度を戻す）
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>;
+        // 1. 軸の入れ替え ＋ Y軸反転で方向を正しく一致させる
+        // 2. 移動量が少ない軸（画面の上下）の感度を個別にアップする（3/2倍）
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
+                           <&zip_y_scaler 3 2>;
     };
 };
 
@@ -61,7 +63,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        cpi = <800>; // CPIを少し上げて全体の感度を確保
+        cpi = <800>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
