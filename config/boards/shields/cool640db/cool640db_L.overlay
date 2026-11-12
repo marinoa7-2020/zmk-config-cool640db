@@ -50,15 +50,28 @@
     };
 };
 
-// 仮想スプリット入力への接続（inputプロパティを追加して修正）
+// スプリット通信で左側のトラックボール入力を右（中央）に送るための正しい定義
 / {
-  zip_adapter_L {
-    compatible = "zmk,input-processor-adapter";
-    #input-processor-cells = <0>;
-    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>;
-    type = <INPUT_EV_REL>;
-    
+    // 1. 個別アダプター（Y反転を適用）
+    zip_adapter_L {
+        compatible = "zmk,input-processor-adapter";
+        #input-processor-cells = <0>;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>;
+        type = <INPUT_EV_REL>;
+        input = <&trackball_L>;
+        output = <&trackball_split_L_adapter>;
+    };
+
+    // 2. スプリット出力ノード（input プロパティを明記してエラーを解消）
+    trackball_split_L_adapter {
+        compatible = "zmk,input-processor-adapter";
+        #input-processor-cells = <0>;
+        input = <&trackball_L>;
+    };
+};
+
+&trackball_split_L {
+    status = "okay";
+    device = <&trackball_L>;
     input = <&trackball_L>;
-    output = <&trackball_split_L>;
-  };
 };
