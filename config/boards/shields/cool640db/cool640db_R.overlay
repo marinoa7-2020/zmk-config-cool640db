@@ -7,10 +7,10 @@
 };
 
 &kscan0 {
-    col-gpios = <&xiao_d 7 GPIO_ACTIVE_HIGH>,
-                <&xiao_d 8 GPIO_ACTIVE_HIGH>,
+    col-gpios = <&xiao_d 10 GPIO_ACTIVE_HIGH>,
                 <&xiao_d 9 GPIO_ACTIVE_HIGH>,
-                <&xiao_d 10 GPIO_ACTIVE_HIGH>,
+                <&xiao_d 8 GPIO_ACTIVE_HIGH>,
+                <&xiao_d 7 GPIO_ACTIVE_HIGH>,
                 <&gpio0 10 GPIO_ACTIVE_HIGH>;
 };
 
@@ -55,19 +55,12 @@
     };
 };
 
-// 左側と同様に、スプリット経由で正常に動かすためのアダプター定義
+// 右側トラックボールの入力リスナー（直接ポインタとして処理する定義）
 / {
-    zip_adapter_R {
-        compatible = "zmk,input-processor-adapter";
-        #input-processor-cells = <0>;
+    trackball_listener_R: trackball_listener_R {
+        compatible = "zmk,input-listener";
+        status = "okay";
+        device = <&trackball_R>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>;
-        type = <INPUT_EV_REL>;
-        input = <&trackball_R>;
-        output = <&trackball_split_R>;
     };
-};
-
-&trackball_split_R {
-    status = "okay";
-    device = <&trackball_R>;
 };
