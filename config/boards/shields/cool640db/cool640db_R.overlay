@@ -42,10 +42,10 @@
         status = "okay";
         device = <&trackball_R>;
 
-        // 1. 軸の入れ替え ＋ Y軸反転で方向を正しく一致させる
-        // 2. 移動量が少ない軸（画面の上下）の感度を個別にアップする（3/2倍）
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
-                           <&zip_y_scaler 3 2>;
+        // 1. 軸の入れ替え ＋ X軸の反転（左右の動きの向きを直す）
+        // 2. 移動量が少ない軸（画面の上下方向に対応する軸）の感度を2倍に引き上げる
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_X_INVERT)>,
+                           <&zip_y_scaler 2 1>;
     };
 };
 
